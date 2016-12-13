@@ -1,0 +1,6 @@
+html
+	head
+		each val, key in og_data
+			meta( property = 'og:' + key , content = val )
+	body
+		h1 Fantasy Match

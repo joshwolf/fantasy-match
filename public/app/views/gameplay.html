@@ -1,0 +1,15 @@
+<div class="container" ng-show="current_game" id="game-page">
+	<section class="row gameplay">
+		<a ng-href="/game/{{gameplay.GameId}}"><img ng-src="{{gameplay.Game.image_thumbnail}}"></a>
+		<h1>{{gameplay.Game.title}} ({{gameplay.Game.year_published}})</h1>
+		<h2>{{gameplay.play_date | date: 'shortDate' }}</h2>
+		<h3 ng-if="current_game.categories">{{current_game.categories | humanizedList}}</h3>
+		<h3 ng-if="current_game.mechanics">{{current_game.mechanics | humanizedList}}</h3>
+		<ul class="clearfix">
+			<li ng-repeat="score in gameplay.Scores | orderBy: 'rank'">
+				<user-icon user="score.Player"></user-icon>
+				<p>{{score.points}}</p>
+			</li>
+		</ul>
+	</section>
+</div>

@@ -1,0 +1,85 @@
+<form>
+	<div class="form-group">
+		<label for="leagueName">League Name</label>
+		<input type="text" class="form-control" id="leagueName" aria-describedby="leagueName" ng-model="new_league.name" placeholder="">
+		<small id="leagueNameHelp" class="form-text text-muted">Please, no profanity.</small>
+	</div>
+	<div class="form-group">
+		<label for="teamCount">Number of Teams</label>
+		<input class="form-control" type="number" ng-model="new_league.team_count" id="leagueUrl">
+	</div>
+	<div class="form-group">
+		<label for="playerPool">Player Pool</label>
+		<select class="form-control" ng-model="new_league.player_pool" id="playerPool">
+			<option>Mixed</option>
+			<option>AL-Only</option>
+			<option>NL-Only</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="offensive_categories">Offensive Categories</label>
+			<ui-select id="offensive_categories" multiple tagging="offensive_tag_match" tagging-label="(not found)" ng-model="new_league.offensive_categories" tagging-tokens="TAB|SPACE|,|/" ng-keydown="noTab($event)" title="Enter your offensive categories">
+				<ui-select-match placeholder="Enter your categories (HR, OBP, TB, SB-CS, etc...)">{{$item}}</ui-select-match>
+				<ui-select-choices repeat="category in all_offensive_categories | filter:$select.search:startsWith">
+					{{category}}
+				</ui-select-choices>
+			</ui-select>
+	</div>
+	<div class="form-group">
+		<label for="offensive_categories">Offensive Categories</label>
+			<ui-select id="offensive_categories" multiple tagging="offensive_tag_match" tagging-label="(not found)" ng-model="new_league.offensive_categories" tagging-tokens="TAB|SPACE|,|/" ng-keydown="noTab($event)" title="Enter your offensive categories">
+				<ui-select-match placeholder="Enter your categories (HR, OBP, TB, SB-CS, etc...)">{{$item}}</ui-select-match>
+				<ui-select-choices repeat="category in all_offensive_categories | filter:$select.search:startsWith">
+					{{category}}
+				</ui-select-choices>
+			</ui-select>
+	</div>
+	<div class="form-group">
+		<label for="leagueHost">League Host</label>
+		<select class="form-control" ng-model="new_league.host" id="leagueHost">
+			<option>Fantrax</option>
+			<option>CBS</option>
+			<option>Yahoo</option>
+			<option>Proboards</option>
+			<option>ESPN</option>
+			<option>Other</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="leagueFee">League Fee</label>
+		<div class="input-group"> 
+				<span class="input-group-addon">$</span>
+				<input type="number" ng-model="new_league.fee" value="0" min="0" step="1" class="form-control currency" id="leagueFee" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="startYear">Year Started</label>
+		<input type="number" ng-model="new_league.start_year" min="1970" value="2016" class="form-control number" id="startYear" />
+		<small id="leagueNameHelp" class="form-text text-muted">What was the first year this league played?</small>
+	</div>
+	<div class="form-group">
+		<label for="leagueUrl">League Homepage</label>
+		<input class="form-control" type="url" ng-model="new_league.url" id="leagueUrl" placeholder="http://...">
+		<small id="leagueNameHelp" class="form-text text-muted">e.g. http://www.fantrax.com/fantasy/league/8wp89vauiu04kha0/home</small>
+	</div>
+	<div class="form-group">
+		<label for="rosterDetails">Roster Details</label>
+		<textarea class="form-control" id="rosterDetails" rows="3"></textarea>
+		<small id="rosterDetailsHelp" class="form-text text-muted">Please describe the makeup of your team rosters (positions, bench slots, farm system, etc.)</small>
+		<small id="rosterDetailsHelp" class="form-text text-muted">If you are looking for a replacement owner for an existing team, list the current roster here.</small>
+	</div>
+	<div class="form-group">
+		<label for="keeperDetails">Keeper Details</label>
+		<textarea class="form-control" id="keeperDetails" rows="3"></textarea>
+		<small id="keeperDetailsHelp" class="form-text text-muted">How many players are kept? How long can they be kept?</small>
+	</div>
+	<div class="form-group">
+		<label for="useFaab">Do you use FAAB?</label>
+		<div class="btn-group">
+	        <label class="btn btn-success" ng-model="new_league.uses_faab" uib-btn-radio="'Left'">Yes</label>
+	        <label class="btn btn-danger" ng-model="new_league.uses_faab" uib-btn-radio="'Middle'">No</label>
+	   	</div>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>

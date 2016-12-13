@@ -1,0 +1,41 @@
+<div class="container" ng-show="user" id="user-page">
+		{{$rootScope.isMobile}}
+	<img class="user-profile-pic" ng-src="{{user.profile_pic}}">
+	<label><h2>{{user.full_name}}</h2></label>
+    <nav class="gameplay-display">
+    	<div class="btn-group" data-intro="View {{user.first_name}}'s Gameplays chronologically, or grouped by title" data-position="bottom">
+	        <label class="btn btn-primary" ng-model="games_grouped" uib-btn-radio="false">List By Date</label>
+    	    <label class="btn btn-primary" ng-model="games_grouped" uib-btn-radio="true">List By Game</label>
+    	</div>
+    </nav>
+	<section ng-show="current_user && games_grouped" class="grouped-gameplays">
+	    <ul class="pagination" uib-pagination total-items="pagination.totalItemsGrouped" items-per-page="5" ng-model="pagination.currentPageGrouped" max-size="paginationSize()" class="pagination-sm" boundary-links="!isMobile" num-pages="numPagesGrouped" ng-change="setPageGrouped()" boundary-link-numbers="!isMobile" rotate="isMobile"></ul>
+		<article ng-repeat="(game, plays) in pagedGameplaysGrouped | orderBy: 'Game.title' | groupBy: 'Game.title'" class="well clearfix" style="background-image: url({{plays[0].Game.image_thumbnail}});">
+			<aside class="col-xs-3">
+				<a ng-href="/game/{{plays[0].GameId}}">
+					<img class="img-game" ng-src="{{plays[0].Game.image_thumbnail}}" uib-tooltip="{{plays[0].Game.title}}" title="{{plays[0].Game.title}}">
+					<label>
+						<h2>{{plays[0].Game.title}}</h2>
+					</label>
+				</a>
+			</aside>
+			<div class="col-xs-9 gameplays">
+				<article ng-repeat="gameplay in plays | orderBy: '-play_date'">
+					<h4>{{gameplay.play_date | date:'shortDate'}}</h4>
+					<ul class="clearfix gameplay-scores">
+						<li ng-repeat="score in gameplay.Scores | orderBy: 'rank'">
+							<user-icon user="score.Player" rank="score.rank"></user-icon>
+							<p>{{score.points}}</p>
+						</li>
+					</ul>
+				</article>
+			</div>
+		</article>
+	    <ul class="pagination" uib-pagination total-items="pagination.totalItemsGrouped" items-per-page="5" ng-model="pagination.currentPageGrouped" max-size="paginationSize()" class="pagination-sm" boundary-links="!isMobile" num-pages="numPagesGrouped" ng-change="setPageGrouped()" boundary-link-numbers="!isMobile" rotate="isMobile"></ul>
+	</section>
+	<section ng-class="current_user ? '' : 'recent-gameplays-nologin'" ng-show="!games_grouped">
+	    <ul class="pagination" uib-pagination total-items="pagination.totalItems" items-per-page="10" ng-model="pagination.currentPage" max-size="paginationSize()" class="pagination-sm" boundary-links="!isMobile" num-pages="numPages" ng-change="setPage()" boundary-link-numbers="!isMobile" rotate="isMobile"></ul>
+		<gameplay ng-repeat="gameplay in pagedGameplays" gameplay-data="gameplay"></gameplay>
+	    <ul class="pagination" uib-pagination total-items="pagination.totalItems" items-per-page="10" ng-model="pagination.currentPage" max-size="paginationSize()" class="pagination-sm" boundary-links="!isMobile" num-pages="numPages" ng-change="setPage()" boundary-link-numbers="!isMobile" rotate="isMobile"></ul>
+	</section>
+</div>

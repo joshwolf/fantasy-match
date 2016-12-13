@@ -1,0 +1,490 @@
+$font-family: 'Lato','Verdana','Helvetica','Sans-Serif';
+$font-family-header: 'Roboto','Verdana','Sans-Serif';
+$font-family-coach-marks: 'Indie Flower','cursive','Verdana','Sans-Serif';
+$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$primary-red: #890000;
+$secondary-blue: #1695A3;
+$light-blue: #ACF0F2;
+$orange: #EB7F00;
+$off-white: #F3FFE2;
+// bower:scss
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "mixins";
+// endbower
+
+.browsehappy {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+
+body {
+	padding: 0;
+	font-family: $font-family;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: $font-family-header;
+}
+ul {
+	li {
+		list-style-type: none;
+	}
+}
+
+.font-fontawesome{
+	font-family: 'FontAwesome',$font-family;
+}
+
+.chardinjs-tooltip {
+	.chardinjs-tooltiptext {
+		font-family: $font-family-coach-marks;
+		font-size: 2rem;
+	}
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.btn-cancel {
+	cursor: pointer;
+}
+
+/* Custom page header */
+.header {
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 10px;
+
+	/* Make the masthead heading the same height as the navigation */
+	h3 {
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: 40px;
+		padding-bottom: 19px;
+	}
+	.navbar-default {
+		background-color: $primary-red;
+		padding: 0;
+		border-radius: 0;
+		border: none;
+	}
+	.navbar {
+		margin-bottom: 0;
+	}
+	.navbar-brand, .navbar-brand:hover, .navbar-brand:visited {
+		font-size: 2rem;
+		color: $off-white;
+		cursor: pointer;
+	}
+	show-help {
+		margin-left: 2rem;
+		@include centerer(false, true);
+	}
+}
+
+/* Custom page footer */
+.footer {
+	padding-top: 19px;
+	color: #777;
+	//border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+	margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+
+	.btn {
+		font-size: 21px;
+		padding: 14px 24px;
+	}
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+		display: none;
+}
+
+.nav {
+	.user {
+		cursor: pointer;
+		i {
+			padding: 15px;
+			line-height: 20px;
+			color: #fff;
+			&:hover {
+				color: $primary-red;
+				background: #fff;
+			}
+		}
+	}
+}
+
+#game-quicksearch {
+	display: inline-block;
+	width: 33vw;
+	float: left;
+	max-width: 500px;
+	margin: 8px;
+}
+
+.user-quicksearch {
+	.user-quicksearch-pic {
+		margin-right: 1.5rem;
+	}
+}
+
+.ui-select-container input.ui-select-search:not(.ng-touched) {
+    width: 100% !important;
+}
+
+img.profile-circle, span.initials-circle {
+	height: 5rem;
+	width: 5rem;
+	border-radius: 50%;
+	vertical-align: middle;
+	display: inline-block;
+	font-weight: normal;
+	text-align: center;
+	color: #333;
+	font-size: 2rem;
+	overflow: hidden;
+	top: 50%;
+	bottom: auto;
+	&[rank="1"] {
+		border: 3px solid #ffff00;
+	}
+}
+
+img.profile-circle {
+	cursor: pointer;
+}
+
+span.initials-circle {
+	padding: 1rem 0;
+	&[rank="1"] {
+		padding: .8rem 0;
+	}
+}
+
+ul.gameplay-scores {
+	padding-left: 0;
+	li {
+		list-style-type: none;
+		float: left;
+		margin: .5rem;
+		p {
+			text-align: center;
+			width: 5rem;
+			font-weight: normal;
+		}
+	}
+}
+
+.recent-gameplays-nologin {
+	article {
+		display: inline-block;
+		margin: .2rem;
+	}
+}
+
+gameplay {
+	article.well {
+		padding-bottom: 0;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		position: relative;
+		> * {
+			position: relative;
+		}
+		label {
+			max-width: 66%;
+		}
+		&:before {
+			content: ' ';
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(255,255,255,.75);
+		}
+		ul {
+			margin-bottom: 0;
+			margin-right: 2rem;
+		}
+		h2 {
+			margin-top: 0;
+		}
+		> a {
+			float: left;
+		}
+		.img-game {
+			margin-right: 1rem;
+		}
+	}
+}
+
+.grouped-gameplays {
+	article.well {
+		padding-bottom: 0;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		position: relative;
+		&:before {
+			content: ' ';
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(255,255,255,.75);
+			display: block;
+		}
+		> * {
+			position: relative;
+		}
+		.img-game {
+			margin: 0 auto;
+			position: relative;
+			display: block;
+			text-align: center;
+		}
+		label {
+			width: 100%;
+			cursor: pointer;
+			h2 {
+				text-align: center;
+				font-size: 2rem;
+				color: black;
+			}
+		}
+	}
+}
+
+#game-page {
+	#new-gameplay {
+		@include transition(all ease 1s);
+		max-height: 200vh;
+		overflow: visible;
+		.date-played {
+			width: 10rem;
+			text-align: center;
+		}
+		.recent-opponents {
+			li {
+				list-style-type: none;
+				float: left;
+				margin-right: 1rem;
+				cursor: pointer;
+			}
+		}
+		&.ng-hide {
+			height: 0px;
+			max-height: 0;
+		}
+		aside.rank {
+			display: inline;
+		}
+	}
+	.game-actions {
+		padding-left: 0;
+		display: inline-block;
+		li {
+			float: left;
+			list-style-type: none;
+			width: auto;
+			display: inline;
+			cursor: pointer;
+				img {
+					width: 6rem;
+				}
+		}
+	}
+	#gameplays {
+		ul {
+			li {
+				list-style-type: none;
+				float: left;
+
+				p {
+					text-align: center;
+					width: 5rem;
+				}
+			}
+		}
+		.fa-facebook-official {
+			font-size: 3rem;
+		}
+		.bgg-share-icon {
+			height: 3rem;
+		    width: 3rem;
+		    vertical-align: bottom;
+		}
+	}
+}
+
+#user-page {
+	.gameplay-display {
+		margin: 1rem 0;
+	}
+}
+
+#opponents-page {
+	.opponent-games {
+		margin-top: 1rem;
+		height: 100vh;
+		overflow: hidden;
+		.topics-select {
+			margin-bottom: 1rem;
+		}
+		> ul {
+			overflow: scroll;
+			height: 100%;
+			li {
+				padding: 1rem;
+				margin: .2rem;
+				cursor: pointer;
+				display: inline-block;
+				width: 108%;
+				h3 {
+					margin-top: 0;
+				}
+				&:hover, &.active {
+					background-color: #fff;
+					border-radius: 1rem;
+				}
+			}
+		}
+	}
+	.chart-opponent {
+		margin-top: 1rem;
+		label {
+			font-size: 2.2rem;
+			display: block;
+			text-align: center;
+			color: $orange;
+		}
+	}
+	.selected-game {
+		background-color: #fff;
+		border-radius: 1rem;
+		height: 100%;
+		padding-top: 1rem;
+		.game-thumbnail {
+			margin: 1rem auto;
+		}
+		label {
+			font-size: 2.2rem;
+			display: block;
+			text-align: center;
+			color: $orange;
+		}
+		canvas {
+			margin-bottom: 2rem;
+		}
+	}
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+	/* Remove the padding we set earlier */
+	.header,
+	.marketing,
+	.footer {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	/* Space out the masthead */
+	.header {
+		margin-bottom: 30px;
+	}
+	/* Remove the bottom border on the jumbotron for visual effect */
+	.jumbotron {
+		border-bottom: 0;
+	}
+}
+
+@media (min-width: 979px) {
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+}
+@media (min-width: 992px) {
+	.container {
+		max-width: 1024px;
+	}
+}
+@media (max-width: 992px) {
+	.container {
+		width: 100vw;
+	}
+	.header {
+		padding: 0;
+		border-bottom: none;
+		.main-nav {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100vw;
+		    height: 52px;
+			#game-quicksearch {
+				width: 70vw;
+				.ui-select-choices {
+					font-size: 1rem;		
+				}
+			}
+			ul.navbar-nav {
+				margin: 0;
+				position: absolute;
+				right: 0;
+				top: -1px;
+				li.user {
+					img {
+						float: right;
+					}
+					display: inline;
+					div {
+						display: inline;
+					}
+					ul.dropdown-menu li {
+						display: inline-block;
+						background-color: #fff;
+						width: 100vw;
+						border-top: 1px solid $primary-red;
+						border-bottom: 1px solid $primary-red;
+						text-align: center;
+						font-size: 2rem;
+						position: relative;
+						z-index: 100;
+						padding: 2rem;
+					}
+				}
+			}
+		}
+	}
+	ul.pagination {
+		font-size: 1.5rem;
+	}
+	#game-page {
+		.user-quicksearch {
+			input {
+				width: 80%;
+				margin: 1rem auto;
+			}
+
+		}
+	}
+}

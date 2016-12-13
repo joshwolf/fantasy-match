@@ -1,0 +1,13 @@
+<div class="container" id="home-page">
+	<div class="container" id="spinner" ng-show="current_user && is_loading">
+		<span us-spinner="{radius:30, width:8, length: 16}"></span>
+	</div>
+	<button class="btn" ng-show="current_user" ng-click="showForm = true">Add</button>
+	<league-form ng-show="showForm" new-league="new_league"></league-form>
+	<section ng-if="!is_loading">
+		<h2>Recently:</h2>
+	    <ul class="pagination" uib-pagination total-items="pagination.totalItems" ng-model="pagination.currentPage" max-size="5" class="pagination-sm" boundary-links="!isMobile" num-pages="numPages" ng-change="setPage()" rotate="!isMobile"></ul>
+		<gameplay ng-repeat="gameplay in []" gameplay-data="gameplay"></gameplay>
+	    <ul class="pagination" uib-pagination total-items="pagination.totalItems" ng-model="pagination.currentPage" max-size="5" class="pagination-sm" boundary-links="!isMobile" num-pages="numPages" ng-change="setPage()" rotate="!isMobile"></ul>
+	</section>
+</div>
